@@ -11,12 +11,13 @@ export class Data {
     let data: Asset[] = [];
     for (let i = 0; i < 4; i++) {
       data.push({
-        msn: 'msn',
+        msn: `hasan-${i}`,
+        type: `type-${i}`,
         age: i,
-        parties: [{
-          name: 'aercap',
-          role: 'lessor'
-        }]
+        // parties: [{
+        //   name: `party-${i}`,
+        //   role: 'lessor'
+        // }]
       });
     }
     console.log(data);
@@ -29,5 +30,6 @@ export class Data {
 export class Asset {
   msn: string;
   age: number;
-  parties: { name: string, role: string }[];
+  type: string;
+  // parties: { name: string, role: string }[];
 }

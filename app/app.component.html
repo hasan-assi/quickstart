@@ -1,31 +1,50 @@
 
-<div class="container">
+<div class="container-fluid">
     <div>
-    <h4>Drag-and-Drop - Shopping basket</h4>
+
         <div class="row">
-            <div class="col-sm-3">
+            <div class="col-md-2">
                 <div class="panel panel-success">
-                    <div class="panel-heading">Available products</div>
+                    <div class="panel-heading">Fields-Header</div>
                     <div class="panel-body">
                         <div *ngFor="let key of keys" class="panel panel-default"
-                            dnd-draggable  [dragData]="product" (onDragSuccess)="orderedProduct($event)" [dropZones]="['demo1']">
+                            dnd-draggable  [dragData]="key" (onDragSuccess)="onDragSuccess($event)" [dropZones]="['demo1']">
                             <div class="panel-body">
-                                <div >{{ key}}</div>
+                                <div >{{ key }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+              <div class="panel panel-success">
+                    <div class="panel-heading">Fields-list</div>
+                    <div class="panel-body">
+                        <div *ngFor="let key of keys" class="panel panel-default"
+                            dnd-draggable  [dragData]="key" (onDragSuccess)="onDragSuccess($event)" [dropZones]="['demo2']">
+                            <div class="panel-body">
+                                <div >{{ key }}</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3">
-                <div dnd-droppable (onDropSuccess)="addToBasket($event)" [dropZones]="['demo1']" class="panel panel-info">
-                    <div class="panel-heading">Shopping Basket<br>(to pay: \${{totalCost()}})</div>
+            <div class="col-md-10" style="position: relative">
+                <div dnd-droppable style="position: relative; height: 100px" (onDropSuccess)="onDropSuccess($event)" [dropZones]="['demo1']" class="panel panel-info">
                     <div class="panel-body">
-                        <div *ngFor="let product of shoppingBasket" class="panel panel-default">
-                            <div class="panel-body">
-                            {{product.name}}<br>(ordered: {{product.quantity}}<br>cost: \${{product.cost * product.quantity}})
-                            </div>
-                        </div>
+                        <input style="position: absolute; width: 100px; border: none;"
+                        [style.left]="l.x+'px'"
+                        [style.top]="l.y+'px'"
+                        *ngFor="let l of selectedHeaders" type = 'text' [value]="getValue(l)"/>
                     </div>
+                </div>
+
+                <div dnd-droppable style="position: relative; height: 100px" (onDropSuccess)="onDropListSuccess($event)" [dropZones]="['demo2']" class="panel panel-info">
+
+                      <tr><td *ngFor="let k of selectedList" style="width: 100px">{{ k }}</td></tr>
+                      <tr *ngFor="let row of result">
+                         <td *ngFor="let k of selectedList" style="width: 100px">{{ row[k] }}</td>
+                        <!--<td><h1>{{i}}</h1></td>-->
+                      </tr>
                 </div>
             </div>
         </div>
@@ -97,5 +116,3 @@
     </div>-->
 
 </div>
-
-{{ keys || json }}

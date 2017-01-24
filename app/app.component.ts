@@ -9,57 +9,43 @@ import { Data } from './service/data.service';
 })
 export class AppComponent {
 
-  availableProducts: Array<Product> = [];
-  shoppingBasket: Array<Product> = [];
-
-  listOne: Array<string> = ['Coffee', 'Orange Juice', 'Red Wine', 'Unhealty drink!', 'Water'];
-
-  listBoxers: Array<string> = ['Sugar Ray Robinson', 'Muhammad Ali', 'George Foreman', 'Joe Frazier', 'Jake LaMotta', 'Joe Louis', 'Jack Dempsey', 'Rocky Marciano', 'Mike Tyson', 'Oscar De La Hoya'];
-  listTeamOne: Array<string> = [];
-  listTeamTwo: Array<string> = [];
-
   private keys: any;
+  private selectedHeaders: any =[];
+  private selectedList: any =[];
+  private result: any=[];
 
 
   getDataModelNames() {
-    let result: any ;
-    this.data.getData().subscribe(x => result = x);
-    console.log('getDateModel>', result);
-    this.keys = Object.keys(result[0]);
+    // let result: any ;
+    this.data.getData().subscribe(x => this.result = x);
+    console.log('getDateModel>', this.result);
+    this.keys = Object.keys(this.result[0]);
   }
 
   constructor(
     private data: Data
   ) {
     this.getDataModelNames();
-    this.availableProducts.push(new Product("Blue Shoes", 3, 35));
-    this.availableProducts.push(new Product("Good Jacket", 1, 90));
-    this.availableProducts.push(new Product("Red Shirt", 5, 12));
-    this.availableProducts.push(new Product("Blue Jeans", 4, 60));
   }
 
-  orderedProduct(orderedProduct: Product) {
-    orderedProduct.quantity--;
+  onDragSuccess(orderedProduct: Product) {
+    // orderedProduct.quantity--;
   }
 
-  addToBasket(newProduct: Product) {
-    for (let indx in this.shoppingBasket) {
-      let product: Product = this.shoppingBasket[indx];
-      if (product.name === newProduct.name) {
-        product.quantity++;
-        return;
-      }
-    }
-    this.shoppingBasket.push(new Product(newProduct.name, 1, newProduct.cost));
+  onDropSuccess(key: any) {
+
+    this.selectedHeaders.push({key: key.dragData, x: key.mouseEvent.layerX, y: key.mouseEvent.layerY});
+    // this.shoppingBasket.push(new Product(newProduct.name, 1, newProduct.cost));
   }
 
-  totalCost(): number {
-    let cost: number = 0;
-    for (let indx in this.shoppingBasket) {
-      let product: Product = this.shoppingBasket[indx];
-      cost += (product.cost * product.quantity);
-    }
-    return cost;
+   onDropListSuccess(key: any) {
+
+    this.selectedList.push(key.dragData);
+    // this.shoppingBasket.push(new Product(newProduct.name, 1, newProduct.cost));
+  }
+
+  getValue(key:any){
+    return this.result[0][key.key];
   }
 
 }
