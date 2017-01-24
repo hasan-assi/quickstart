@@ -1,9 +1,9 @@
-import { HtmlSpecFilter } from 'jasmine';
+// import { HtmlSpecFilter } from 'jasmine';
 import { applyMixins } from 'rxjs/util/applyMixins';
 import { appendFile } from 'fs';
 import { Component } from '@angular/core';
 import { Data } from './service/data.service';
-import * as html2canvas from 'html2canvas';
+import * as html2canvas from '../node_modules/html2canvas/dist/html2canvas.js';
 
 
 @Component({

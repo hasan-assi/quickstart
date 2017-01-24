@@ -4,7 +4,7 @@
         Export To PDF
     </button>
 </div>
-<div id="2Export" class="container-fluid>
+<div  class="container-fluid">
     <div>
 
         <div class="row">
@@ -33,7 +33,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-10" style="position: relative">
+            <div class="col-md-10" id="2Export" style="position: relative">
                 <div dnd-droppable style="position: relative; height: 100px" (onDropSuccess)="onDropSuccess($event)" [dropZones]="['demo1']" class="panel panel-info">
                     <div class="panel-body">
                         <input style="position: absolute; width: 100px; border: none;"
@@ -43,7 +43,7 @@
                     </div>
                 </div>
 
-                <div dnd-droppable style="position: relative; height: 100px" (onDropSuccess)="onDropListSuccess($event)" [dropZones]="['demo2']" class="panel panel-info">
+                <div dnd-droppable style="position: relative; height: 400px" (onDropSuccess)="onDropListSuccess($event)" [dropZones]="['demo2']" class="panel panel-info">
 
                       <tr><td *ngFor="let k of selectedList" style="width: 100px">{{ k }}</td></tr>
                       <tr *ngFor="let row of result">
