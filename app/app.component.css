@@ -407,3 +407,10 @@ there.
 
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {}
+
+.export-container {
+  margin-top: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}

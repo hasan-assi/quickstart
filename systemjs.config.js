@@ -6,7 +6,8 @@
   System.config({
     paths: {
       // paths serve as alias
-      'npm:': 'node_modules/'
+      'npm:': 'node_modules/',
+      html2canvas: 'node_modules/html2canvas/dist/html2canvas.js'
     },
     // map tells the System loader where to look for things
     map: {
@@ -27,7 +28,8 @@
       // other libraries
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
-      'ng2-dnd': 'npm:ng2-dnd/bundles/index.umd.js'
+      'ng2-dnd': 'npm:ng2-dnd/bundles/index.umd.js',
+      'html2canvas': 'npm:html2canvas/dist/html2canvas.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {

@@ -1,10 +1,14 @@
+<<<<<<< HEAD
 
+<div class="container-fluid">
+=======
 <div class="export-container">
     <button (click)="onExportButtonClick()">
         Export To PDF
     </button>
 </div>
-<div id="2Export" class="container-fluid>
+<div id="2Export" class="container">
+>>>>>>> 53030ec35163fa158d9839dede748542e5dcda2a
     <div>
 
         <div class="row">

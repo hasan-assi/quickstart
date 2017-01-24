@@ -1,10 +1,15 @@
+import { HtmlSpecFilter } from 'jasmine';
+import { applyMixins } from 'rxjs/util/applyMixins';
+import { appendFile } from 'fs';
 import { Component } from '@angular/core';
 import { Data } from './service/data.service';
+import * as html2canvas from 'html2canvas';
 
 
 @Component({
   moduleId: module.id,
   selector: 'my-app',
+  styleUrls: ['app.component.css'],
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
@@ -48,6 +53,13 @@ export class AppComponent {
     return this.result[0][key.key];
   }
 
+  onExportButtonClick() {
+    const el = document.getElementById('2Export');
+    html2canvas(el)
+      .then((canvas: any) => {
+        document.body.appendChild(canvas);
+      });
+    }
 }
 
 class Product {
